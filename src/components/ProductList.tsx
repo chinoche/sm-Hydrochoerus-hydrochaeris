@@ -21,12 +21,12 @@ const ProductList: React.FC<ProductListProps> = ({cart, setCart}) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const limit: number = 10;
 
-  /*
-  * Using the isMounted variable to check whether the component is still mounted before updating the state for
-  * preventing memory leaks when updating the state when the component is unmounted
-  *
-  * @return: cleanup function that sets isMounted to false when the component is unmounted :D
-  */
+  /**
+   * Using the isMounted variable to check whether the component is still mounted before updating the state for
+   * preventing memory leaks when updating the state when the component is unmounted
+   *
+   * @return: cleanup function that sets isMounted to false when the component is unmounted :D
+   **/
   useEffect(() => {
     let isMounted = true;
     const skip = (page - 1) * limit;
@@ -46,11 +46,22 @@ const ProductList: React.FC<ProductListProps> = ({cart, setCart}) => {
     };
   }, [page]);
 
+  /**
+   *
+   * @param event : The event at the dom (virtualdom) and how we can handle it
+   * @param value : the current page or if it is a next for the current page
+   */
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number): void => {
     setPage(value);
     setLoading(true);
   };
 
+  /**
+   * We search for the product passed as an argument so we can increment the qty in the cart or create a new entry in
+   * the array
+   * @param product : The selected product over click at the Buy Button
+   *
+   */
   const addToCart = (product: Product) => {
     const itemAtIndex = findItemInCart(cart, product);
     if (itemAtIndex >= 0) {

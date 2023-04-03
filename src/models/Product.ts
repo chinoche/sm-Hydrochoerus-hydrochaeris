@@ -1,3 +1,6 @@
+/**
+ * The model that will let us work with the Products individually
+ */
 export interface Product {
   id: number;
   title: string;

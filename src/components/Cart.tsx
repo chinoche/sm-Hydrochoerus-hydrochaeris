@@ -2,10 +2,20 @@ import {CartItem} from "../models/CartItem";
 import {Box, Card, CardContent, CardMedia, List, ListItem, Typography} from "@mui/material";
 import React from "react";
 
+/**
+ * The props type for {@link components/Cart}.
+ * @category Component Props
+ */
 interface CartProps {
+  /** The array of {@link models/CartItem} **/
   cart: CartItem[];
 }
 
+/**
+ *
+ * @param cart : The array of {@link models/CartItem} that will contain the information about the products, price, qty
+ * in order to sum the total and display it
+ */
 const Cart: React.FC<CartProps> = ({cart}) => {
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.product.price * item.quantity, 0

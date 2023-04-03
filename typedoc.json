@@ -1,0 +1,18 @@
+{
+  "entryPoints": [
+    "src/"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "out": "docs",
+  "theme": "default",
+  "readme": "none",
+  "disableSources": true,
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-merge-modules"
+  ],
+  "tsconfig": "tsconfig.json"
+}

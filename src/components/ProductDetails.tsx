@@ -16,6 +16,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({cart, setCart}) => {
   const [product, setProduct] = useState<Product | null>(null);
 
 
+  /**
+   * Fetch the data from the server and set it to the state, so we can proceed with the render and the proper actions
+   * can be made
+   */
   useEffect(() => {
     async function fetchData() {
       // @ts-ignore
@@ -26,6 +30,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({cart, setCart}) => {
     fetchData();
   }, [id]);
 
+  /**
+   * We search for the product passed as an argument so we can increment the qty in the cart or create a new entry in
+   * the array
+   * @param product : The selected product over click at the Buy Button
+   *
+   */
   const addToCart = (product: Product) => {
     const itemAtIndex = findItemInCart(cart, product);
     if (itemAtIndex >= 0) {
