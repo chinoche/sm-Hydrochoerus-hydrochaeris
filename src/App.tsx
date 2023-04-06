@@ -2,11 +2,10 @@ import {Container, Box} from '@mui/material';
 import './App.css';
 import ProductList from "./components/ProductList";
 import Appbar from "./components/Appbar";
-import useStateWithStorage from "./hooks/useStateWithStorage";
-import {CartItem} from "./models/CartItem";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
+import {useCart} from "./context/CartContext";
 
 /**
  * Renders the base App for the application, which will be used by the React entry point.
@@ -25,8 +24,7 @@ const App = () => {
    * The definition of the custom hook for this project, this will handle the state for the cart, so it can be passed to
    * other components depending on what is planned to do
    */
-  const [cart, setCart] = useStateWithStorage<CartItem[]>('cart', []);
-
+  const {cart, setCart} = useCart();
   return (
     <div className="App">
       <Router>
